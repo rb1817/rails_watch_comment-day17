@@ -1,0 +1,76 @@
+
+
+<h1 id = "title">Movies</h1>
+<div id = "title" class = "row">
+<%@movies.each do |movie|%>
+<div class="card col-md-3">
+  <img class="card-img-top" src="<%= movie.image_path.thumb.url%>" alt="<%=movie.title%>">
+  <div class="card-body">
+    <h5 class="card-title" data_id=1,><span><%=movie.title%></span></h5>
+    <p class="card-text">장르:<%=movie.genre%></p>
+    <p class="card-text">주연배우:<%=movie.actor%></p>
+    <p class="card-text">감독:<%=movie.director%></p>
+    <%= link_to '영화 정보보기', movie_path(movie), class: "btn btn-primary"%>
+  </div>
+</div>
+<%end%>
+</div>
+
+<br>
+
+<%= link_to 'New Movie', new_movie_path %>
+
+<hr>
+<% if user_signed_in?%>
+  <%=current_user.email %>
+  <%= link_to "로그아웃", destroy_user_session_path, method: :delete%>
+<%else%>
+  <%= link_to "로그인",new_user_session_path%>
+<%end%>
+<script>
+// var func1 = function() {
+//   alert("하이");
+// }
+// function func2() {
+//   alert("하이2");
+// }
+// func1();
+// func2();
+
+// var btn = document.getElementsByClassName("btn")[0];
+// btn.addEventListener("mouseover"),func2);
+
+// var btn2 = document.getElementsByClassName("btn")[1];
+// btn2.onmouseover = func1;
+
+//버튼(요소)에 마우스를 오버(이벤트) 했더니(이벤트 리스너)
+//그 위에 있던 글자(요소)들이 갑자기 이상한 글자로 변한다(이벤트 핸들러).
+//
+// var btn = document.getElementsByClassName("btn")[0];
+// var count = 0;
+// var title = document.getElementsByClassName("card-title")[0];
+// var t =title.innerText
+// btn.addEventListener("mouseover", function(){
+   
+//     var title = document.getElementsByClassName("card-title")[0];
+//     console.dir(title)
+//     title.innerText = "don't tounch me..";
+// });
+// btn.addEventListener("mouseout", function(){
+//     var title = document.getElementsByClassName("card-title")[0];
+//     title.innerText = t;
+// });
+
+
+//버튼에 마우스를 올리면(이벤드, 이벤트 리스너) 
+//해당 버튼(요소)의 clss가 btn btn-danger로 변함(이벤트 핸들러)
+// var btn = document.getElementsByClassName("btn")[0];
+
+// btn.addEventListener("mouseover", function() {
+//   btn.setAttribute("class","btn btn-danger disabled");
+// });
+
+// btn.addEventListener("mouseout", function() {
+//   btn.setAttribute("class","btn btn-primary");
+// });
+</script>
